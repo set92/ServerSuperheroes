@@ -7,5 +7,5 @@ __author__ = 'javier'
 def get_near_objects(**kwargs):
     user_id = kwargs['pk']
     user = User.objects.get(id=user_id)
-    objects = Entity.objects.filter(position__distance_lte=(user.position, D(km=1)))
-    return objects
+    objects = Entity.objects.select_subclasses().filter(position__distance_lte=(user.position, D(km=1)))
+    return list(objects)
