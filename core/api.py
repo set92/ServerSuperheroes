@@ -24,8 +24,19 @@ class UserResource(ModelResource):
                 self.wrap_view('list_near_objects_par')),
         ]
 
+    # def obj_update(self, bundle, skip_errors=False, **kwargs):
+    #     super(UserResource, self).obj_update(bundle, skip_errors=skip_errors, **kwargs)
+
     class Meta:
         resource_name = 'user'
         queryset = User.objects.all()
         authorization = Authorization()
-
+        extra_actions = [
+            {
+                'name': 'objects',
+                'http_method': 'GET',
+                'resource_type': 'view',
+                'description': 'Retrieve list of objects next to the user\'s last known location',
+                'fields': {}
+            }
+        ]

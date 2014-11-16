@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'tastypie',
+    'tastypie_swagger',
     'core',
 )
 
@@ -92,3 +93,5 @@ AUTH_USER_MODEL = 'core.User'
 
 TASTYPIE_ALLOW_MISSING_SLASH = True
 TASTYPIE_FULL_DEBUG = True
+
+TASTYPIE_SWAGGER_API_MODULE = 'ServerSuperheroes.urls.v1_api'
